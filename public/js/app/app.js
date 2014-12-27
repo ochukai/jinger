@@ -4,7 +4,6 @@
 var app = angular.module('myApp', 
             [
                 'ngAnimate',
-                'ngStorage',
                 'ngRoute',
                 'angular-loading-bar'
             ], 

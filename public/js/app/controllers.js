@@ -1,9 +1,7 @@
 var app = angular.module('myApp');
 
 app.controller('NavController', ['$scope', function ($scope) {
-    
-    
-    
+      
 }]);
 
 app.controller('AddController', ['$scope', '$http', function ($scope, $http) {
