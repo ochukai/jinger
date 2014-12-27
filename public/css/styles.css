@@ -1,0 +1,167 @@
+@font-face {
+    font-family: "responsivenav";
+    src: url("../icons/responsivenav.eot");
+    src: url("../icons/responsivenav.eot?#iefix") format("embedded-opentype"), url("../icons/responsivenav.ttf") format("truetype"), url("../icons/responsivenav.woff") format("woff"), url("../icons/responsivenav.svg#responsivenav") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+html,
+body {
+    min-height: 100%;
+    font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+body {
+    background-color: #3E4651;
+}
+/*nav-sider*/
+
+.nav-collapse {
+    position: absolute;
+    width: 20%;
+    top: 2em;
+    left: 0;
+}
+.nav-collapse > h1 {
+    color: #eee;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.nav-collapse > ul > li {
+/*    text-align: right;*/
+}
+/*change bootstrap's style.*/
+
+.nav > li > a {
+    color: #eee;
+    transition: background .2s ease-in;
+}
+.nav > li > a:hover {
+    color: #428bca;
+    background-color: #fff;
+}
+.nav > li > a {
+    color: #eee;
+}
+.nav > li.divider {
+    height: 1px;
+    width: 90%;
+    background-color: #fff;
+    margin: 1em auto;
+    box-shadow: 0 0 1px #eee;
+}
+/*nav toggle button*/
+
+.nav-toggle {
+    display: none;
+}
+/*begin main*/
+
+.main {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    padding: 1em 3em 3em;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-top-left-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .6);
+    top: 1em;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    background: #fff;
+}
+/*change style of scroll bar.*/
+
+.main::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background-color: #aaaaaa;
+    width: 8px;
+    height: 8px;
+}
+.main::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: #3E4651;
+}
+@media screen and (max-width: 40em) {
+    .js .nav-collapse {
+        clip: rect(0 0 0 0);
+        max-height: 0;
+        position: absolute;
+        display: block;
+        overflow: hidden;
+    }
+    .nav-collapse {
+        top: 0;
+        width: 100%;
+        position: relative;
+    }
+    .nav-collapse.opened {
+        max-height: 9999px;
+    }
+    .nav-toggle {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-decoration: none;
+        text-indent: -999px;
+        position: relative;
+        overflow: hidden;
+        width: 70px;
+        height: 55px;
+        float: right;
+        display: block;
+        margin: 0 -2em 1em 0;
+    }
+    .nav-toggle:before {
+        color: #444;
+        /* Edit this to change the icon color */
+        font-family: "responsivenav";
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        font-size: 28px;
+        text-transform: none;
+        position: absolute;
+        content: "\2261";
+        text-indent: 0;
+        text-align: center;
+        line-height: 65px;
+        speak: none;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    .nav-toggle.active:before {
+        font-size: 24px;
+        content: "\78";
+    }
+    .main {
+        -webkit-overflow-scrolling: auto;
+        box-shadow: none;
+        padding: 0 2em 2em;
+        border-radius: 0;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    .main::-webkit-scrollbar {
+        background-color: transparent;
+    }
+}
+@media screen and (min-width: 76em) {
+    .nav-collapse {
+        width: 18em;
+    }
+    .main {
+        width: auto;
+        left: 18em;
+    }
+}

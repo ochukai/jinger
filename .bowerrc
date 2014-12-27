@@ -1,0 +1,4 @@
+{
+    "directory": "public/lib/", // 这里可以规定依赖安装的位置。
+    "analytics": false
+}

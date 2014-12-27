@@ -1,0 +1,41 @@
+doctype html
+html(lang='zh', ng-app='myApp')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='Jinger')
+    meta(name='author', content='Ochukai')
+    
+    title= title
+    link(rel='icon', href='favicon.ico')
+    
+    // Bootstrap core CSS
+    link(href='/lib/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/lib/loading-bar/loading-bar.css', rel='stylesheet')
+    link(href='/css/styles.css', rel='stylesheet')
+  body
+    #nav-sider.nav-collapse
+      ul.nav.nav-pills.nav-stacked(role='navigation')
+        li
+          a(href='')
+            h2  &#x4EAC;&#x513F; 
+        li.divider
+    .main(role='main')
+      a.nav-toggle(href='#nav') Menu  
+      .container-fluid
+        .row
+          #main-container.col-sm-12.col-md-12(ng-view='')
+    
+    //Bootstrap core JavaScript
+    script(src='/lib/jquery/jquery.min.js')    
+    script(src='/lib/bootstrap/js/bootstrap.min.js')   
+    script(src='/lib/nav-js/responsive-nav.min.js')
+    // angularjs
+    script(src='/lib/angular/angular.js')    
+    script(src='/lib/angular/angular-animate.js')
+    script(src='/lib/angular/angular-route.js')
+    script(src='/lib/angular/angular-storage.js')
+    script(src='/lib/loading-bar/loading-bar.js')
+    script(src='/js/app/app.js')
+    script(src='/js/app/controllers.js')

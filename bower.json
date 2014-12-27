@@ -1,0 +1,27 @@
+{
+  "name": "jinger",
+  "version": "0.0.1",
+  "homepage": "https://github.com/xiaoyee/jinger",
+  "authors": [
+    "Ochukai <sex.xiaoyee@gmail.com>"
+  ],
+  "description": "jinger",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "jinger"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
