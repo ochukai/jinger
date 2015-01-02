@@ -168,6 +168,7 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 
+
 -- ----------------------------
 -- Table structure for `users_roles`
 -- ----------------------------
@@ -176,7 +177,7 @@ CREATE TABLE `users_roles` (
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`user_id`,`role_id`),
-  KEY `fk_u_r_2` (`role_id`),
+  KEY `fk_u_r_2` (`role_id`),   
   CONSTRAINT `fk_u_r_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
   CONSTRAINT `fk_u_r_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

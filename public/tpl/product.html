@@ -3,7 +3,7 @@
 </div>
 
 <!-- Standard button -->
-<a class="btn btn-default"> 添加 </a>
+<a class="btn btn-success"> 添加 </a>
 <br />
 <br />
 <form class="form-inline" role="form">
@@ -11,24 +11,8 @@
         <label class="sr-only" for="exampleInputEmail2">Email address</label>
         <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
     </div>
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-addon">@</div>
-            <input class="form-control" type="email" placeholder="Enter email">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="exampleInputPassword2">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox">Remember me
-        </label>
-    </div>
-    <button type="submit" class="btn btn-default">Sign in</button>
+    <button type="submit" class="btn btn-info">Query</button>
 </form>
-
 
 <div class="table-responsive">
     <table class="table table-striped table-hover">
@@ -42,6 +26,20 @@
             </tr>
         </thead>
         <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.address}}</td>
+            </tr>
+            <tr ng-repeat="user in users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.address}}</td>
+            </tr>
             <tr ng-repeat="user in users">
                 <td>{{user.id}}</td>
                 <td>{{user.username}}</td>

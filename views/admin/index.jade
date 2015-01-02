@@ -14,26 +14,24 @@ html(lang='zh', ng-app='myApp')
     link(href='/bower-components/angular-loading-bar/build/loading-bar.min.css', rel='stylesheet')
     link(href='/css/styles.css', rel='stylesheet')
   body
-    #nav-sider.nav-collapse
-      ul.nav.nav-pills.nav-stacked(role='navigation')
-        li
-          a(href='')
-            h2  &#x4EAC;&#x513F; 
-        li.divider
+    // sider menus
+    admin-sider
+
     .main(role='main')
-      a.nav-toggle(href='#nav') Menu  
       .container-fluid
         .row
-          #main-container.col-sm-12.col-md-12(ng-view='')
+          #main-container.col-sm-12.col-md-12.ng-animate-fade(ng-view='')
     
     // Bootstrap core JavaScript
-    script(src='/bower-components/jquery/dist/jquery.min.js')    
-    script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')   
+    script(src='/bower-components/jquery/dist/jquery.min.js')
+    script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')
     // Angular
-    script(src='/bower-components/angular/angular.min.js')    
+    script(src='/bower-components/angular/angular.min.js')
     script(src='/bower-components/angular-animate/angular-animate.min.js')
     script(src='/bower-components/angular-route/angular-route.min.js')
+    script(src='/bower-components/a0-angular-storage/dist/angular-storage.min.js')
     script(src='/bower-components/angular-loading-bar/build/loading-bar.min.js')
-    script(src='/js/vendor/nav-js/responsive-nav.min.js')
     script(src='/js/app/app.js')
     script(src='/js/app/controllers.js')
+    script(src='/js/app/services.js')
+    script(src='/js/app/directives.js')

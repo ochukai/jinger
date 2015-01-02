@@ -1,0 +1,14 @@
+<div class="page-header">
+    <h1> 请登陆 </h1>
+</div>
+<form class="form-signin" role="form" ng-submit="login()">
+    <input type="text" class="form-control" placeholder="用户名" required autofocus ng-model="username">
+    <input type="password" class="form-control" placeholder="密码" required ng-model="password">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="remember-me" ng-model="rememberMe">记住密码
+        </label>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">确认登陆</button>
+</form>
