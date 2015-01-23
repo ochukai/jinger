@@ -7,6 +7,14 @@ body {
 body {
     background-color: #3E4651;
 }
+/**/
+
+.panel {
+    padding-left: 0;
+    padding-right: 0;
+}
+/**/
+
 /*nav-sider*/
 
 .nav-collapse {
@@ -162,4 +170,39 @@ body {
 }
 #logout-well > p:last-child > a {
     margin-right: 1em;
+}
+/*image selector*/
+
+.img-upload-container {
+    border: 3px dotted #7ABA7B;
+    border-radius: 10px;
+    width: 80%;
+    min-height: 150px;
+    cursor: pointer;
+}
+.img-upload-container > input[type="file"] {
+    opacity: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+}
+.img-upload-container:hover {
+    background: #efe;
+}
+.img-upload-text {
+    display: block;
+    line-height: 150px;
+    height: 150px;
+    font-size: 1.6 rem;
+    text-align: center;
+    color: #7ABA7B;
+}
+.img-upload-del {
+    display: inline-block;
+    margin: 5px;
+    z-index: 20;
 }

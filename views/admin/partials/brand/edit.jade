@@ -1,0 +1,21 @@
+.page-header
+  h1 &#x65B0;&#x5EFA;&#x54C1;&#x724C;
+form.form-horizontal(name='brandForm', ng-submit='submit()', novalidate='', role='form')
+  .col-sm-8
+    .form-group
+      label.col-sm-3.control-label(for='input-name') 新品牌名称
+      .col-sm-6
+        input#input-name.form-control(type='text', placeholder='请输入品牌名称', name='name', ng-model='brandName', required='')
+        p.help-block(ng-show='brandForm.name.$invalid') 必须填写名称
+    hr    
+    .form-group
+      label.col-sm-3.control-label(for='input-name') 请选择一张图片
+      .col-sm-6
+        input(type='file', name='uploadPicture' ng-show='uploader.queue.length <= 0', nv-file-select='', uploader='uploader', multiple='' )
+        p.help-block(ng-show='uploader.queue.length <= 0') 大于等于 200 * 200 最好
+        div(ng-repeat='item in uploader.queue', ng-show='uploader.isHTML5')
+          ng-thumb(data-attrs='{ file: item._file, height: 200 }')
+    hr
+    .form-group
+      .col-sm-offset-3.col-sm-9
+        button.btn.btn-success(type='submit', ng-disabled='brandForm.$invalid') 添加

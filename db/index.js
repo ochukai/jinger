@@ -1,6 +1,6 @@
-var mysql  = require('mysql');
+var mysql = require('mysql');
 var config = require('../config');
-var pool   = mysql.createPool(config.dbConfig);
+var pool = mysql.createPool(config.dbConfig);
 
 var when = require('when');
 var util = require('util');
@@ -22,7 +22,7 @@ exports.connection = function () {
     return when.promise(getConn);
 };
 
-exports.query = function query(sql, params) {
+var poolQuery = exports.query = function (sql, params) {
 
     /* we can also use connection to query and then we should release the connection.*/
     var queryDirectly = function (resolve, reject, notify) {
@@ -31,14 +31,14 @@ exports.query = function query(sql, params) {
             if (err) {
                 reject(err);
             } else {
-                
+
                 console.log('sql: ' + this.sql);
                 console.log(rows);
-                
+
                 resolve(rows, fields);
             }
         });
-        
+
     };
 
     return when.promise(queryDirectly);
@@ -60,19 +60,22 @@ exports.queryPage = function (sql, params) {
         page = params.page || 1,
 
         offset = pageSize * (page - 1),
-        limit = pageSize;
+        limit = pageSize,
 
-    var countSql = util.format('select count(1) as count from (%s) t__mp', sql),
-        pageSql = util.format('%s limit %d, %d', sql, offset, limit);
+        countSql = util.format('select count(1) as count from (%s) t__mp', sql),
+        pageSql = util.format('%s limit %d, %d', sql, offset, limit),
 
-    var tasks = [
-        // for total count.
-        pool.query(countSql, args),
-        // for page data.
-        pool.query(pageSql, args)
-    ];
+        tasks = [
+            // for total count.
+            poolQuery(countSql, args),
+            // for page data.
+            poolQuery(pageSql, args)
+        ];
 
     return when.all(tasks).then(function (results) {
+        
+        console.log('results: ' + JSON.stringify(results));
+        
         var countArr = results[0];
 
         return new Page({
@@ -82,7 +85,7 @@ exports.queryPage = function (sql, params) {
             data: results[1],
         });
     });
-    
+
 };
 
 exports.insert = function (tableName, source) {

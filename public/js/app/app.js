@@ -5,41 +5,80 @@ var app = angular.module('myApp',
             [
                 'ngAnimate', 
                 'ngRoute',
+                'ngResource',
                 'angular-storage',
-                'angular-loading-bar'
+                'angular-loading-bar',
+                'angularFileUpload'
             ]);
 
 // config the $routeProvider.
-app.config(['$routeProvider', '$httpProvider',
-    function ($routeProvider, $httpProvider) {
+app.config(['$routeProvider', '$httpProvider', '$locationProvider',
+    function ($routeProvider, $httpProvider, $locationProvider) {
+            
+        $locationProvider.html5Mode(true);
 
         $routeProvider
-            .when('/', {
-                template: '',
+            .when('/admin', { 
+                templateUrl: '/admin/partials/me',
                 controller: 'MainController'
             })
-            .when('/me', {
-                templateUrl: '/tpl/me.html',
-                controller: 'MainController'
-            })
-            .when('/login', {
-                templateUrl: '/tpl/login.html',
+        
+            // Login, Logout, Regist
+            .when('/admin/login', {
+                templateUrl: '/admin/partials/login',
                 controller: 'LoginController'
             })
-            .when('/regist', {
-                templateUrl: '/tpl/regist.html',
-                controller: 'LoginController'
+            .when('/admin/regist', {
+                templateUrl: '/admin/partials/regist',
+                controller: 'RegistController'
             })          
-            .when('/logout', {
-                templateUrl: '/tpl/logout.html',
-                controller: 'LoginController'
+            .when('/admin/logout', {
+                templateUrl: '/admin/partials/logout',
+                controller: 'LogoutController'
             }) 
+            
+            // brand
+            .when("/admin/brand", {
+                templateUrl: "/admin/partials/brand-list",
+                controller: "BrandIndexController"
+            })
+            .when("/admin/brand/new", {
+                templateUrl: "/admin/partials/brand-edit",
+                controller: "BrandEditController"
+            })
+            .when("/admin/brand/:id", {
+                templateUrl: "/admin/partials/brand-show",
+                controller: "BrandShowController"
+            })
+            .when("/admin/brand/:id/edit", {
+                templateUrl: "/admin/partials/brand-edit",
+                controller: "BrandEditController"
+            })
+        
+            // product admin start
             .when('/product', {
-                templateUrl: '/tpl/product.html',
+                templateUrl: '/tpl/product/list.html',
                 controller: 'ProductController'
             })
+            .when('/product/new', {
+                templateUrl: '/tpl/product/new.html',
+                controller: 'ProductController'
+            })
+            // product end
+        
+            // category admin start
+            .when('/category', {
+                templateUrl: '/tpl/category/list.html',
+                controller: 'CategoryController'
+            })
+            .when('/category/new', {
+                templateUrl: '/tpl/category/new.html',
+                controller: 'CategoryController'
+            })
+            // category end
+        
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/admin'
             });
 
         $httpProvider.interceptors
@@ -56,7 +95,7 @@ app.config(['$routeProvider', '$httpProvider',
                         },
                         'responseError': function (response) {
                             if (response.status === 401 || response.status === 403) {
-                                $location.path('/login');
+                                $location.path('/admin/login');
                             }
                             return $q.reject(response);
                         }

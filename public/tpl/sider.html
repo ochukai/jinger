@@ -1,12 +1,12 @@
 <div id="nav-sider" class="nav-collapse">
     <ul role="navigation" class="nav nav-pills nav-stacked">
         <li>
-            <a href="#/"><h2> 京儿 </h2></a>
+            <a href="/admin"><h2> 京儿 </h2></a>
         </li>
         <li class="divider"></li>
         <li ng-class="{'active': menu.isActive, 'divider': menu.isDivider}" 
             ng-repeat="menu in menus">
-            <a ng-if="!menu.isDivider" href="#{{menu.url}}"> {{menu.name}} </a>
+            <a ng-if="!menu.isDivider" href="/admin{{menu.url}}"> {{menu.name}} </a>
         </li>
     </ul>
 </div>
