@@ -5,23 +5,6 @@ var pool = mysql.createPool(config.dbConfig);
 var when = require('when');
 var util = require('util');
 
-var Page = require('../util/page');
-
-/*
- * discouraged function to get connection.
- */
-exports.connection = function () {
-
-    var getConn = function (resolve, reject, notify) {
-        pool.getConnection(function (err, connection) {
-            // connected! (unless `err` is set)
-            err ? reject(err) : resolve(connection);
-        });
-    };
-
-    return when.promise(getConn);
-};
-
 var poolQuery = exports.query = function (sql, params) {
 
     /* we can also use connection to query and then we should release the connection.*/
@@ -38,11 +21,9 @@ var poolQuery = exports.query = function (sql, params) {
                 resolve(rows, fields);
             }
         });
-
     };
 
     return when.promise(queryDirectly);
-
 };
 
 /*
@@ -73,19 +54,14 @@ exports.queryPage = function (sql, params) {
         ];
 
     return when.all(tasks).then(function (results) {
-        
-        console.log('results: ' + JSON.stringify(results));
-        
         var countArr = results[0];
-
-        return new Page({
+        return {
             pageSize: pageSize,
             page: page,
             total: countArr[0].count,
-            data: results[1],
-        });
+            data: results[1]
+        };
     });
-
 };
 
 exports.insert = function (tableName, source) {
@@ -103,7 +79,6 @@ exports.insert = function (tableName, source) {
             }
         });
     });
-
 };
 
 // exports.update = function () {};

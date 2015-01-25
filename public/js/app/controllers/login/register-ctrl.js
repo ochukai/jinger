@@ -1,6 +1,6 @@
-app.controller('RegistController', ['$rootScope', '$scope', '$location', 'store', 'LoginService',
+app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'store', 'LoginService',
     function ($rootScope, $scope, $location, store, LoginService) {
-        $scope.regist = function () {
+        $scope.register = function () {
             var formData = {
                 username: $scope.username,
                 password: $scope.password

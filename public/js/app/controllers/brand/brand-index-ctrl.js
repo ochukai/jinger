@@ -10,11 +10,9 @@ app.controller('BrandIndexController', ['$scope', 'Brand',
 
         $scope.toPage = function (pageNumber) {
 
-            console.log('toPage: ', pageNumber);
-
             var pageRequest = {
                 page: pageNumber,
-                pageSize: 8,
+                pageSize: 6,
                 brandName: ($scope.queryBrandName || '').trim()
             };
 

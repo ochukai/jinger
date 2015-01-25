@@ -1,6 +1,6 @@
 var formidable = require('formidable');
-var when = require('when');
-var _ = require('underscore');
+var when       = require('when');
+var _          = require('underscore');
 
 exports.parse = function (req) {
 
@@ -18,7 +18,5 @@ exports.parse = function (req) {
                     resolve(_.extend(fields, files));
                 }
             });
-        
     });
-    
 };

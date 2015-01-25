@@ -23,13 +23,14 @@ html(lang='zh', ng-app='myApp')
     
     // Bootstrap core JavaScript
     script(src='/bower-components/jquery/dist/jquery.min.js')
-    script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')
+    // script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')
 
     // Angular
     script(src='/bower-components/angular/angular.min.js')
     script(src='/bower-components/angular-animate/angular-animate.min.js')
     script(src='/bower-components/angular-route/angular-route.min.js')
     script(src='/bower-components/angular-resource/angular-resource.min.js')
+    script(src='/bower-components/angular-bootstrap/ui-bootstrap-tpls.min.js')
     script(src='/bower-components/a0-angular-storage/dist/angular-storage.min.js')
     script(src='/bower-components/angular-loading-bar/build/loading-bar.min.js')
     
@@ -45,18 +46,27 @@ html(lang='zh', ng-app='myApp')
     script(src='/js/app/controllers/main-ctrl.js')
     script(src='/js/app/controllers/login/login-ctrl.js')
     script(src='/js/app/controllers/login/logout-ctrl.js')
-    script(src='/js/app/controllers/login/regist-ctrl.js')
-    
+    script(src='/js/app/controllers/login/register-ctrl.js')
+
     script(src='/js/app/controllers/brand/brand-edit-ctrl.js')
     script(src='/js/app/controllers/brand/brand-index-ctrl.js')
     script(src='/js/app/controllers/brand/brand-show-ctrl.js')
+
+    script(src='/js/app/controllers/product/product-edit-ctrl.js')
+    script(src='/js/app/controllers/product/product-index-ctrl.js')
+    script(src='/js/app/controllers/product/product-show-ctrl.js')
+
+    script(src='/js/app/controllers/category/category-edit-ctrl.js')
+    script(src='/js/app/controllers/category/category-index-ctrl.js')
+    script(src='/js/app/controllers/category/category-show-ctrl.js')
     
     // services
     script(src='/js/app/services/login-service.js')
     script(src='/js/app/services/brand-service.js')
-    script(src='/js/app/services/pagination-service.js')
+    script(src='/js/app/services/product-service.js')
+    script(src='/js/app/services/category-service.js')
 
     // directives
     script(src='/js/app/directives/admin-sider.js')
     script(src='/js/app/directives/ng-thumb.js')
-    script(src='/js/app/directives/image-selector.js')
+    script(src='/js/app/directives/pagination.js')

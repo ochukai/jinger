@@ -6,6 +6,7 @@ var app = angular.module('myApp',
                 'ngAnimate', 
                 'ngRoute',
                 'ngResource',
+                'ui.bootstrap',
                 'angular-storage',
                 'angular-loading-bar',
                 'angularFileUpload'
@@ -23,14 +24,14 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
                 controller: 'MainController'
             })
         
-            // Login, Logout, Regist
+            // Login, Logout, Register
             .when('/admin/login', {
                 templateUrl: '/admin/partials/login',
                 controller: 'LoginController'
             })
-            .when('/admin/regist', {
-                templateUrl: '/admin/partials/regist',
-                controller: 'RegistController'
+            .when('/admin/register', {
+                templateUrl: '/admin/partials/register',
+                controller: 'RegisterController'
             })          
             .when('/admin/logout', {
                 templateUrl: '/admin/partials/logout',
@@ -55,27 +56,41 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
                 controller: "BrandEditController"
             })
         
-            // product admin start
+            // product
             .when('/product', {
-                templateUrl: '/tpl/product/list.html',
-                controller: 'ProductController'
+                templateUrl: '/admin/partials/product-list',
+                controller: 'ProductIndexController'
             })
             .when('/product/new', {
-                templateUrl: '/tpl/product/new.html',
-                controller: 'ProductController'
+                templateUrl: '/admin/partials/product-edit',
+                controller: 'ProductEditController'
             })
-            // product end
-        
-            // category admin start
+            .when('/product/:id', {
+                templateUrl: '/admin/partials/product-show',
+                controller: 'ProductShowController'
+            })
+            .when('/product/:id/edit', {
+                templateUrl: '/admin/partials/product-list',
+                controller: 'ProductEditController'
+            })
+
+            // category
             .when('/category', {
-                templateUrl: '/tpl/category/list.html',
-                controller: 'CategoryController'
+                templateUrl: '/admin/partials/category-list',
+                controller: 'CategoryIndexController'
             })
             .when('/category/new', {
-                templateUrl: '/tpl/category/new.html',
-                controller: 'CategoryController'
+                templateUrl: '/admin/partials/category-edit',
+                controller: 'CategoryEditController'
             })
-            // category end
+            .when('/category/:id', {
+                templateUrl: '/admin/partials/category-show',
+                controller: 'CategoryShowController'
+            })
+            .when('/category/:id/edit', {
+                templateUrl: '/admin/partials/category-list',
+                controller: 'CategoryEditController'
+            })
         
             .otherwise({
                 redirectTo: '/admin'

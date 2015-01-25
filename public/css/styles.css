@@ -4,15 +4,18 @@ body {
     font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
 }
+
 body {
     background-color: #3E4651;
 }
+
 /**/
 
 .panel {
     padding-left: 0;
     padding-right: 0;
 }
+
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -21,6 +24,11 @@ body {
 .table > tfoot > tr > td {
     vertical-align: middle;
 }
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
 /**/
 
 /*nav-sider*/
@@ -32,27 +40,33 @@ body {
     top: 2em;
     left: 0;
 }
+
 .nav-collapse > h1 {
     color: #eee;
     text-align: center;
     margin-bottom: 1em;
 }
+
 .nav-collapse > ul > li {
     /*    text-align: right;*/
 }
+
 /*change bootstrap's style.*/
 
 .nav > li > a {
     color: #eee;
     transition: background .2s ease-in;
 }
+
 .nav > li > a:hover {
     color: #428bca;
     background-color: #fff;
 }
+
 .nav > li > a {
     color: #eee;
 }
+
 .nav > li.divider {
     height: 1px;
     width: 90%;
@@ -60,11 +74,13 @@ body {
     margin: 1em auto;
     box-shadow: 0 0 1px #eee;
 }
+
 /*nav toggle button*/
 
 .nav-toggle {
     display: none;
 }
+
 /*begin main*/
 
 .main {
@@ -84,6 +100,7 @@ body {
     width: 84%;
     background: #fff;
 }
+
 /*change style of scroll bar.*/
 
 .main::-webkit-scrollbar {
@@ -92,10 +109,12 @@ body {
     width: 8px;
     height: 8px;
 }
+
 .main::-webkit-scrollbar-thumb {
     border-radius: 0;
     background-color: #3E4651;
 }
+
 /*login*/
 
 .form-signin {
@@ -103,13 +122,16 @@ body {
     padding: 15px;
     margin: 0 auto;
 }
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
     margin-bottom: 10px;
 }
+
 .form-signin .checkbox {
     font-weight: normal;
 }
+
 .form-signin .form-control {
     position: relative;
     height: auto;
@@ -119,14 +141,17 @@ body {
     padding: 10px;
     font-size: 16px;
 }
+
 .form-signin .form-control:focus {
     z-index: 2;
 }
+
 .form-signin input[type="text"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
+
 .form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
@@ -138,15 +163,19 @@ body {
 #logout-well {
     margin: 2.5em 1em;
 }
+
 #logout-well > h1 {
     margin: .8em 0 1.2em;
 }
+
 #logout-well > p:last-child {
     margin: 2em 0;
 }
+
 #logout-well > p:last-child > a {
     margin-right: 1em;
 }
+
 /*image selector*/
 
 .img-upload-container {
@@ -156,6 +185,7 @@ body {
     min-height: 150px;
     cursor: pointer;
 }
+
 .img-upload-container > input[type="file"] {
     opacity: 0;
     z-index: 10;
@@ -166,17 +196,20 @@ body {
     position: absolute;
     cursor: pointer;
 }
+
 .img-upload-container:hover {
     background: #efe;
 }
+
 .img-upload-text {
     display: block;
     line-height: 150px;
     height: 150px;
-    font-size: 1.6 rem;
+    font-size: 1.6rem;
     text-align: center;
     color: #7ABA7B;
 }
+
 .img-upload-del {
     display: inline-block;
     margin: 5px;

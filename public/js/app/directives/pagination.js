@@ -1,7 +1,7 @@
 /**
  * Showing a pagination bar on the bottom of the list page.
  */
-app.directive('pagination', function () {
+app.directive('paginat', function () {
 
     var Page = function (params) {
 

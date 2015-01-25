@@ -6,7 +6,10 @@ app.controller('LoginController', ['$rootScope', '$scope', '$location', 'store',
         if (typeof token !== 'undefined' && token != null) {
             $location.path('/admin/me');
         } else {
-            $rootScope.menus = [{ "name": "登陆", "url": "/admin/login" }];
+            $rootScope.menus = [
+                { "name": "登陆", "url": "/login" },
+                { "name": "注册", "url": "/register" }
+            ];
         }
 
         $scope.login = function () {
