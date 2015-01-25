@@ -1,3 +1,40 @@
-.page-header
-  h1  &#x65B0;&#x5EFA;&#x54C1;&#x724C; 
-a.btn.btn-default.float-right(href='/admin/brand/new', role='button')  New Brand
+.row
+  .page-header
+    h1 品牌管理&nbsp;
+      small &nbsp;品牌列表
+.row
+  .col-sm-12
+    .col-sm-2
+      // Standard button
+      a.btn.btn-primary.btn-block(href='/admin/brand/new')  添加
+    .col-sm-offset-1.col-sm-8
+      form.form-inline.pull-right(role='form', ng-submit='queryByName()')
+        .form-group
+          label.sr-only(for='searchName') 名称
+          input#searchName.form-control(type='text', placeholder='输入全称或某一个字', ng-model='queryBrandName')
+        button.btn.btn-primary(type='submit') 查询
+hr
+.row
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th #
+          th 名称
+          th 缩略图地址
+          th 缩略图
+          th #
+      tbody
+        tr(ng-repeat='brand in brands')
+          td {{brand.id}}
+          td {{brand.name}}
+          td {{brand.pic_url}}
+          td
+            img.img-circle.img-responsive(src='{{brand.pic_url}}', width='30', height='30')
+          td
+            .btn-group.btn-group-sm(role='group')
+              button.btn.btn-default(type='button')
+                span.glyphicon.glyphicon-pencil(aria-hidden='true')
+              button.btn.btn-danger(type='button')
+                span.glyphicon.glyphicon-trash(aria-hidden='true')
+  pagination

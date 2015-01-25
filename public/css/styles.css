@@ -13,6 +13,14 @@ body {
     padding-left: 0;
     padding-right: 0;
 }
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    vertical-align: middle;
+}
 /**/
 
 /*nav-sider*/
@@ -64,7 +72,7 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
-    padding: 1em 5em 3em;
+    padding: 1em 2.5em;
     position: fixed;
     overflow: hidden;
     overflow-y: scroll;
@@ -87,10 +95,6 @@ body {
 .main::-webkit-scrollbar-thumb {
     border-radius: 0;
     background-color: #3E4651;
-}
-#main-container {
-    width: 98%;
-    margin: 0 auto;
 }
 /*login*/
 
@@ -128,35 +132,7 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-/*view animate*/
 
-.ng-animate-fade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    opacity: 1;
-}
-.ng-animate-fade.ng-enter,
-.ng-animate-fade.ng-leave {
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
-}
-.ng-animate-fade.ng-enter {
-    opacity: 0;
-}
-.ng-animate-fade.ng-enter-active {
-    opacity: 1;
-}
-.ng-animate-fade.ng-leave {
-    opacity: 1;
-}
-.ng-animate-fade.ng-leave-active {
-    opacity: 0;
-}
 /*logout page*/
 
 #logout-well {

@@ -19,15 +19,12 @@ html(lang='zh', ng-app='myApp')
     admin-sider
 
     .main(role='main')
-      .container-fluid
-        .row
-          #main-container.col-sm-12.col-md-12.ng-animate-fade(ng-view='')
+      .container-fluid(ng-view='')
     
     // Bootstrap core JavaScript
     script(src='/bower-components/jquery/dist/jquery.min.js')
     script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')
-    
-    
+
     // Angular
     script(src='/bower-components/angular/angular.min.js')
     script(src='/bower-components/angular-animate/angular-animate.min.js')
@@ -43,6 +40,7 @@ html(lang='zh', ng-app='myApp')
 
     // app
     script(src='/js/app/app.js')
+
     // controllers
     script(src='/js/app/controllers/main-ctrl.js')
     script(src='/js/app/controllers/login/login-ctrl.js')
@@ -56,6 +54,8 @@ html(lang='zh', ng-app='myApp')
     // services
     script(src='/js/app/services/login-service.js')
     script(src='/js/app/services/brand-service.js')
+    script(src='/js/app/services/pagination-service.js')
+
     // directives
     script(src='/js/app/directives/admin-sider.js')
     script(src='/js/app/directives/ng-thumb.js')

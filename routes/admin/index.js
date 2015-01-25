@@ -1,15 +1,12 @@
-var express = require('express');
-var router = express.Router();
-
-var path = require('path')
-var _ = require('underscore');
-var formParser = require('../../util/form-parser.js');
-var cryptor = require('../../util/cryptor');
+var express      = require('express');
+var router       = express.Router();
+var path         = require('path')
+var _            = require('underscore');
+var formParser   = require('../../util/form-parser.js');
+var cryptor      = require('../../util/cryptor');
 var fileOperator = require('../../util/file-operate.js');
-
-var mUser = require('../../models/user');
-
-var brand = require('./brand');
+var mUser        = require('../../models/user');
+var brand        = require('./brand');
 
 router.get('/', function (req, res) {
     res.render('admin/index', {
@@ -44,7 +41,6 @@ router.post('/uploads', function (req, res) {
             //         "mtime": "2015-01-18T13:00:55.337Z"
             //     }
             // }
-
             var file = allFields.file,
                 srcPath = file.path,
                 name = file.name,
