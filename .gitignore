@@ -29,3 +29,6 @@ bower-components
 
 # Users Environment Variables
 .lock-wscript
+
+# idea
+.idea
