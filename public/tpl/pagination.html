@@ -1,16 +1,16 @@
 <nav class="text-center">
     <ul class="pagination">
         <li ng-class="{ disabled: !page.hasPrevious() } ">
-            <a href="#" ng-click="toPreviousPage()">&laquo;</a>
+            <a ng-click="toPreviousPage()">&laquo;</a>
         </li>
 
         <li ng-repeat="pn in page.pages track by $index"
             ng-class="{ active: page.isCurrent(pn), disabled: page.isNotNumber(pn) }">
-            <a href="#" ng-click="toSelectedPage(pn)"> {{pn}} </a>
+            <a ng-click="toSelectedPage(pn)"> {{pn}} </a>
         </li>
 
         <li ng-class="{ disabled: !page.hasNext() } ">
-            <a href="#" ng-click="toNextPage()">&raquo;</a>
+            <a ng-click="toNextPage()">&raquo;</a>
         </li>
     </ul>
 </nav>

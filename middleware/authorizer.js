@@ -40,7 +40,7 @@ function isIgnorePath(path) {
 }
 
 module.exports = function (req, res, next) {
-    console.error('current path: ' + req.path);
+    console.log('current path: ' + req.path);
 
     // get request path
     var path = req.path;

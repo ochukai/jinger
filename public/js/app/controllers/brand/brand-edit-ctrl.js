@@ -1,6 +1,6 @@
 app.controller('BrandEditController', 
-            ['$scope', 'FileUploader', '$q', '$routeParams', '$location', 'Brand',
-    function ($scope, FileUploader, $q, $routeParams, $location, Brand) {
+    ['$scope', 'FileUploader', '$q', '$routeParams', '$location', 'Brand', 'alertService',
+    function ($scope, FileUploader, $q, $routeParams, $location, Brand, alertService) {
         
         // if ($routeParams.id) {
         //     $scope.contact = Contact.show({
@@ -68,7 +68,12 @@ app.controller('BrandEditController',
         };
 
         $scope.submit = function () {
-            uploader.uploadAll();
+            alertService.addSuccess('ok');
+            alertService.addWarning('ok');
+            alertService.addDanger('ok');
+            alertService.addInfo('ok');
+
+            //uploader.uploadAll();
         };
 
     }]);

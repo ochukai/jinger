@@ -15,12 +15,20 @@ html(lang='zh', ng-app='myApp')
     link(href='/bower-components/angular-loading-bar/build/loading-bar.min.css', rel='stylesheet')
     link(href='/css/styles.css', rel='stylesheet')
   body
+    // alerts
+    .alerts
+      div(ng-repeat='alert in alerts', class='alert alert-{{alert.type}} animation')
+        button.close(type='button', ng-click='alert.close()', aria-hidden='true') ×
+        {{ alert.msg }}
+
     // sider menus
     admin-sider
 
+    // main
     .main(role='main')
-      .container-fluid(ng-view='')
-    
+      .container-fluid
+        ng-view
+
     // Bootstrap core JavaScript
     script(src='/bower-components/jquery/dist/jquery.min.js')
     // script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')
@@ -65,6 +73,7 @@ html(lang='zh', ng-app='myApp')
     script(src='/js/app/services/brand-service.js')
     script(src='/js/app/services/product-service.js')
     script(src='/js/app/services/category-service.js')
+    script(src='/js/app/services/alert-service.js')
 
     // directives
     script(src='/js/app/directives/admin-sider.js')
