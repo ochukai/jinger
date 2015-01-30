@@ -1,8 +1,9 @@
 /**
  * Showing a list that could display all the brands by page.
  */
-app.controller('BrandIndexController', ['$scope', 'Brand',
-    function ($scope, Brand) {
+app.controller('BrandIndexController',
+    ['$scope', 'Brand', 'alertService', '$modal',
+    function ($scope, Brand, alertService, $modal) {
 
         $scope.queryByName = function(){
             $scope.toPage(1);
@@ -30,5 +31,47 @@ app.controller('BrandIndexController', ['$scope', 'Brand',
         };
 
         $scope.toPage(1);
+
+        /*
+         -------------------------------------------------
+          delete
+         -------------------------------------------------
+         */
+        $scope.remove = function (id) {
+            $scope.modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                /* shit */
+                controller: 'BrandIndexController',
+                scope: $scope
+            });
+
+            $scope.modalInstance
+                .result
+                .then(
+                    function () {
+                        alertService.addDanger('删除了：' + id);
+                        console.log('ok(delete): ' + id);
+                    },
+                    function () {
+                        alertService.addInfo('什么都没有发生。');
+                        console.log('cancel');
+                    }
+                );
+        };
+
+        $scope.ok = function () {
+            $scope.modalInstance.close('delete');
+        };
+
+        $scope.cancel = function () {
+            $scope.modalInstance.dismiss('cancel');
+        };
+
+        /*
+         -------------------------------------------------
+         edit -- placeholder
+         -------------------------------------------------
+         */
+        $scope.edit = function(){};
 
     }]);

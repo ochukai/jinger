@@ -85,7 +85,7 @@ app.directive('paginat', function () {
     };
 
     Page.prototype.isCurrent = function(pn) {
-         console.log('isCurrent: ', this.page, '===', pn, '-->', (this.page === pn));
+        // console.log('isCurrent: ', this.page, '===', pn, '-->', (this.page === pn));
         return this.page == pn;
     };
 
@@ -99,7 +99,7 @@ app.directive('paginat', function () {
      * @returns {boolean}
      */
     Page.prototype.isNotNumber = function(pn){
-             console.log('isNotNumber: ', pn);
+        // console.log('isNotNumber: ', pn);
         // return /[1-9]+/.test(pn);
         return '...' === pn;
     };
