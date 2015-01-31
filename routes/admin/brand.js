@@ -26,9 +26,10 @@ exports.show = function (req, res) {
     console.info('show - id: ' + id);
 
     mBrand
-        .getById(id)
+        .getByID(id)
         .then(function(brand) {
-            res.json(brand);
+            //[{"id":65,"name":"asd","pic_url":"/uploads/1422366169659.jpg","create_at":"2015-01-27T13:42:50.000Z","create_by":"oliver","modify_at":null,"modify_by":null}]
+            res.json(brand[0]);
         });
 };
 
@@ -57,6 +58,7 @@ exports.create = function (req, res) {
 exports.update = function (req, res) {
 
     var brand = {
+        id: req.params.id,
         name: req.param('name'),
         pic_url: req.param('picUrl'),
         modify_at: new Date(),
@@ -67,8 +69,8 @@ exports.update = function (req, res) {
 
     mBrand
         .update(brand)
-        .then(function(){
-
+        .then(function(result){
+            res.json(result);
         });
 };
 
@@ -76,11 +78,12 @@ exports.remove = function (req, res) {
 
     var id = req.params.id;
 
-    console.info('show-id: ' + id);
+    console.info('remove-id: ' + id);
 
     mBrand
         .remove(id)
         .then(function(brand) {
+            console.log('after remove: ' + JSON.stringify(brand));
             res.json(brand);
         });
 };

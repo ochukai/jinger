@@ -19,7 +19,7 @@ html(lang='zh', ng-app='myApp')
     .alerts
       div(ng-repeat='alert in alerts', class='alert alert-{{alert.type}} animation')
         button.close(type='button', ng-click='alert.close()', aria-hidden='true') ×
-        {{ alert.msg }}
+        {{alert.msg}}
 
     // sider menus
     admin-sider

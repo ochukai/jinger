@@ -31,7 +31,7 @@ hr
             img.img-circle.img-responsive(src='{{brand.pic_url}}', width='40', height='40')
           td
             .btn-group.btn-group-sm(role='group')
-              button.btn.btn-default(type='button', ng-click='')
+              button.btn.btn-default(type='button', ng-click='edit(brand.id)')
                 span.glyphicon.glyphicon-pencil(aria-hidden='true')
               button.btn.btn-danger(type='button', ng-click='remove(brand.id)')
                 span.glyphicon.glyphicon-trash(aria-hidden='true')
