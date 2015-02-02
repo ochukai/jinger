@@ -4,19 +4,16 @@ var db = require('../db');
  * Write specific logic about users here.
  */
 var User = function () {
-
     this.tableName = 'users';
-
 };
 
 User.prototype.queryByToken = function (token) {
 
     var sql = 'select id, username from users where username = ?';
     return db.query(sql, [token]);
-
 };
 
-User.prototype.regist = function (username, password) {
+User.prototype.register = function (username, password) {
 
     var user = {
         username: username,
@@ -46,7 +43,6 @@ User.prototype.saveToken = function (id, token) {
                 return db.query(selectSql, [id]);
             }
         });
-
 };
 
 User.prototype.login = function (username, password) {
@@ -64,7 +60,6 @@ User.prototype.login = function (username, password) {
                 }
             }
         });
-
 };
 
 User.prototype.menus = function (id) {

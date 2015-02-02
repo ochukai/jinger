@@ -31,7 +31,6 @@ router.post('/uploads', function (req, res) {
     formParser
         .parse(req)
         .then(function (allFields) {
-            console.log('in index allFields: ' + JSON.stringify(allFields));
             // {
             //     "file": {
             //         "size": 2071180,
@@ -54,12 +53,10 @@ router.post('/uploads', function (req, res) {
             var filePath = "/uploads/" + getFileName(name),
                 destPath = path.join(__dirname, '../../public' + filePath);
 
-            console.log('__dirname: ' + __dirname);
-            console.log('destPath: ' + destPath);
+            //console.log('__dirname: ' + __dirname);
+            //console.log('destPath: ' + destPath);
 
             fileOperator.copy(srcPath, destPath);
-
-            console.log('file upload success.');
 
             res.json({
                 url: filePath
@@ -102,7 +99,7 @@ router.post('/signup', function (req, res) {
     // TODO valid
 
     mUser
-        .regist(username, cryptor.md5(password))
+        .register(username, cryptor.md5(password))
         .then(function (id) {
             var user = {
                 id: id,
@@ -159,5 +156,7 @@ router
     .get(brand.show)
     .put(brand.update)
     .delete(brand.remove);
+
+
 
 module.exports = router;

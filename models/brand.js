@@ -15,7 +15,7 @@ Brand.prototype.save = function (brand) {
 };
 
 Brand.prototype.list = function (pageRequest) {
-    var sql = 'select id, name, pic_url from brands where mark_for_delete = false and name like ?';
+    var sql = 'select id, name, pic_url as picUrl from brands where mark_for_delete = false and name like ?';
     pageRequest.args = ['%' + (pageRequest.args.name || '') + '%'];
     return db.queryPage(sql, pageRequest);
 };
@@ -23,7 +23,7 @@ Brand.prototype.list = function (pageRequest) {
 Brand.prototype.getByID = function (id) {
 
     var sql = 'select '
-        + 'b.id, b.name, b.pic_url, b.create_at, '
+        + 'b.id, b.name, b.pic_url as picUrl, b.create_at, '
         + 'u.username as create_by, b.modify_at, um.username as modify_by '
         + 'from brands b '
         + 'inner join users u on u.id = b.create_by '

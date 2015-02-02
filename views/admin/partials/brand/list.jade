@@ -28,7 +28,7 @@ hr
           td {{brand.id}}
           td {{brand.name}}
           td
-            img.img-circle.img-responsive(src='{{brand.pic_url}}', width='40', height='40')
+            img.img-circle.img-responsive(src='{{brand.picUrl}}', width='40', height='40')
           td
             .btn-group.btn-group-sm(role='group')
               button.btn.btn-default(type='button', ng-click='edit(brand.id)')
@@ -37,7 +37,7 @@ hr
                 span.glyphicon.glyphicon-trash(aria-hidden='true')
   paginat
 
-  script(type='text/ng-template', id='myModalContent.html').
+  script(type='text/ng-template', id='myModalContent.html')
     <div class="modal-header"><h4 class="modal-title">删除？</h4></div>
     <div class="modal-body">
     <p>真的要删除这一条吗(<span>这是可以恢复的</span>)？</p>

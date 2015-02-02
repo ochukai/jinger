@@ -10,8 +10,10 @@ app.controller('BrandEditController',
             Brand.show({ id: $routeParams.id }) : new Brand();
 
         $scope.submit = function () {
+
             // if an image is selected, it should be uploaded firstly.
             if (uploader.queue.length > 0) {
+                console.log('exist file to upload.');
                 uploader.uploadAll();
             } else {
                 submitOrUpdate();
@@ -19,9 +21,12 @@ app.controller('BrandEditController',
         };
 
         function submitOrUpdate() {
+
             var success = function () {
                     alertService.addSuccess('ok.');
                     console.log('uc success');
+
+                    $location.path('/admin/brand');
                 },
                 failure = function () {
                     alertService.addDanger('error.');

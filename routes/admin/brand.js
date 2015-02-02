@@ -57,6 +57,8 @@ exports.create = function (req, res) {
 
 exports.update = function (req, res) {
 
+    console.log('brand body: ' + JSON.stringify(req.body));
+
     var brand = {
         id: req.params.id,
         name: req.param('name'),
