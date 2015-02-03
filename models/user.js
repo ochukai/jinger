@@ -1,19 +1,12 @@
 var db = require('../db');
 
-/*
- * Write specific logic about users here.
- */
-var User = function () {
-    this.tableName = 'users';
-};
-
-User.prototype.queryByToken = function (token) {
+exports.queryByToken = function (token) {
 
     var sql = 'select id, username from users where username = ?';
     return db.query(sql, [token]);
 };
 
-User.prototype.register = function (username, password) {
+exports.register = function (username, password) {
 
     var user = {
         username: username,
@@ -32,7 +25,7 @@ User.prototype.register = function (username, password) {
 /*
  * save token and select user to return.
  */
-User.prototype.saveToken = function (id, token) {
+exports.saveToken = function (id, token) {
 
     var sql = 'update users set token = ? where id = ?';
 
@@ -45,7 +38,7 @@ User.prototype.saveToken = function (id, token) {
         });
 };
 
-User.prototype.login = function (username, password) {
+exports.login = function (username, password) {
 
     var columns = ['id', 'username', 'password', 'token'],
         sql = 'select ?? from ?? where username = ?';
@@ -62,7 +55,7 @@ User.prototype.login = function (username, password) {
         });
 };
 
-User.prototype.menus = function (id) {
+exports.menus = function (id) {
     var sql = 'select p.id as id, p.name as name, p.value as url ' 
         + 'from roles r ' 
         + 'join users_roles ur on ur.role_id = r.id ' 
@@ -72,5 +65,3 @@ User.prototype.menus = function (id) {
     
     return db.query(sql, id);
 };
-
-module.exports = new User();

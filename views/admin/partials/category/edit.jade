@@ -1,0 +1,21 @@
+.row
+  .page-header
+    h1 添加分类
+  form.form-horizontal(name='categoryForm', ng-submit='submit()', novalidate='', role='form')
+    .col-sm-8
+      .form-group
+        label.col-sm-3.control-label(for='input-name') 名称
+        .col-sm-6
+          input#input-name.form-control(type='text', placeholder='请输入品牌名称', name='name', ng-model='category.name', required='')
+          p.help-block(ng-show='categoryForm.name.$invalid') 必须填写名称~
+      hr
+      .form-group
+        label.col-sm-3.control-label(for='input-name') 父分类
+        .col-sm-6
+          select(name='parent_id', ng-model="category.parent_id", ng-options="cate.id as cate.name for cate in categories")
+            option(value='0') ----请选择----
+          p.help-block(ng-show='uploader.queue.length <= 0') 顶级分类这里可不选~
+      hr
+      .form-group
+        .col-sm-offset-3.col-sm-9
+          button.btn.btn-success(type='submit', ng-disabled='categoryForm.$invalid') 添加

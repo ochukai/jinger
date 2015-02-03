@@ -29,6 +29,17 @@ html(lang='zh', ng-app='myApp')
       .container-fluid
         ng-view
 
+
+    script(type='text/ng-template', id='myModalContent.html')
+        <div class="modal-header"><h4 class="modal-title">删除？</h4></div>
+        <div class="modal-body">
+        <p>真的要删除这一条吗(<span>这是可以恢复的</span>)？</p>
+        </div>
+        <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="ok()"> 删除 </button>
+        <button class="btn btn-default" ng-click="cancel()"> 不 </button>
+        </div>
+
     // Bootstrap core JavaScript
     script(src='/bower-components/jquery/dist/jquery.min.js')
     // script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')

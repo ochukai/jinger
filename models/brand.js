@@ -1,11 +1,7 @@
 var db = require('../db');
 
-var Brand = function () {
-    this.tableName = 'brands';
-};
-
-Brand.prototype.save = function (brand) {
-    return db.insert(this.tableName, brand)
+exports.save = function (brand) {
+    return db.insert('brands', brand)
         .then(function (result) {
             var id = result.insertId || 0;
             if (id > 0) {
@@ -14,13 +10,13 @@ Brand.prototype.save = function (brand) {
         });
 };
 
-Brand.prototype.list = function (pageRequest) {
+exports.list = function (pageRequest) {
     var sql = 'select id, name, pic_url as picUrl from brands where mark_for_delete = false and name like ?';
     pageRequest.args = ['%' + (pageRequest.args.name || '') + '%'];
     return db.queryPage(sql, pageRequest);
 };
 
-Brand.prototype.getByID = function (id) {
+exports.getByID = function (id) {
 
     var sql = 'select '
         + 'b.id, b.name, b.pic_url as picUrl, b.create_at, '
@@ -34,12 +30,12 @@ Brand.prototype.getByID = function (id) {
     return db.query(sql, id);
 };
 
-Brand.prototype.remove = function (id) {
+exports.remove = function (id) {
     var sql = 'update brands b set mark_for_delete = true where b.id = ?';
     return db.query(sql, id);
 };
 
-Brand.prototype.update = function (brand) {
+exports.update = function (brand) {
 
     var sql = 'update brands b '
         + 'set name = ?, pic_url = ?, modify_at = ?, modify_by = ? '
@@ -48,5 +44,3 @@ Brand.prototype.update = function (brand) {
 
     return db.query(sql, params);
 };
-
-module.exports = new Brand();

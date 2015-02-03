@@ -1,0 +1,39 @@
+.row
+  .page-header
+    h1 分类管理&nbsp;
+      small &nbsp;分类列表
+.row
+  .col-sm-12
+    .col-sm-2
+      // Standard button
+      a.btn.btn-primary.btn-block(href='/admin/category/new')  添加
+    .col-sm-offset-1.col-sm-8
+      form.form-inline.pull-right(role='form', ng-submit='queryByName()')
+        .form-group
+          label.sr-only(for='queryCategoryName') 名称
+          input#searchName.form-control(type='text', placeholder='输入全称或某一个字', ng-model='queryCategoryName')
+        button.btn.btn-primary(type='submit') 查询
+hr
+.row
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th.col-sm-1 #
+          th.col-sm-5 名称
+          th.col-sm-2 父分类编号
+          th.col-sm-2 父分类名称
+          th.col-sm-2 #
+      tbody
+        tr(ng-repeat='category in categories')
+          td {{category.id}}
+          td {{category.name}}
+          td {{category.parent_id}}
+          td {{category.parent_name}}
+          td
+            .btn-group.btn-group-sm(role='group')
+              button.btn.btn-default(type='button', ng-click='edit(category.id)')
+                span.glyphicon.glyphicon-pencil(aria-hidden='true')
+              button.btn.btn-danger(type='button', ng-click='remove(category.id)')
+                span.glyphicon.glyphicon-trash(aria-hidden='true')
+  paginat
