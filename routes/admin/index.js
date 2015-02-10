@@ -6,7 +6,9 @@ var formParser   = require('../../util/form-parser.js');
 var cryptor      = require('../../util/cryptor');
 var fileOperator = require('../../util/file-operate.js');
 var mUser        = require('../../models/user');
+
 var brand        = require('./brand');
+var category     = require('./category');
 
 router.get('/', function (req, res) {
     res.render('admin/index', {
@@ -117,6 +119,7 @@ router.post('/signup', function (req, res) {
             }
         });
 
+    // TODO catch exception.
 });
 
 router.post('/mymenus', function (req, res) {
@@ -156,6 +159,18 @@ router
     .get(brand.show)
     .put(brand.update)
     .delete(brand.remove);
+
+// brand
+router
+    .route('/category')
+    .get(category.list)
+    .post(category.create);
+
+router
+    .route('/category/:id')
+    .get(category.show)
+    .put(category.update)
+    .delete(category.remove);
 
 
 

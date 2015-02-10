@@ -1,10 +1,10 @@
 app.factory("Product", function($resource, $http) {
     var resource = $resource(
-        "/api/product/:id",
+        "/admin/product/:id",
         { id: "@_id" },
         {
             'create':  { method: 'POST' },
-            'index':   { method: 'GET', isArray: true },
+            'query':   { method: 'GET', isArray: false },
             'show':    { method: 'GET', isArray: false },
             'update':  { method: 'PUT' },
             'destroy': { method: 'DELETE' }

@@ -26,10 +26,10 @@ hr
           th.col-sm-2 #
       tbody
         tr(ng-repeat='category in categories')
-          td {{category.id}}
-          td {{category.name}}
-          td {{category.parent_id}}
-          td {{category.parent_name}}
+          td {{ category.id }}
+          td {{ category.name }}
+          td {{ category.parent_id }}
+          td {{ category.parent_name }}
           td
             .btn-group.btn-group-sm(role='group')
               button.btn.btn-default(type='button', ng-click='edit(category.id)')

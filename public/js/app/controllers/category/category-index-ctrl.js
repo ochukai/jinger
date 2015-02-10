@@ -20,6 +20,9 @@ app.controller('CategoryIndexController',
             console.log('toPage(pageRequest): ', pageRequest);
 
             var page = Category.query(pageRequest, function () {
+
+                console.log('query categories：', page.data);
+
                 $scope.categories = page.data;
                 $scope.pageModel = {
                     page     : page.page,
@@ -46,16 +49,15 @@ app.controller('CategoryIndexController',
             });
 
             $scope.modalInstance
-                .result
-                .then(
-                function () {
-                    removeCategory(id);
-                },
-                function () {
-                    alertService.addInfo('什么都没有发生。');
-                    console.log('cancel');
-                }
-            );
+                .result.then(
+                    function () {
+                        removeCategory(id);
+                    },
+                    function () {
+                        alertService.addInfo('什么都没有发生。');
+                        console.log('cancel');
+                    }
+                );
         };
 
         $scope.ok = function () {
@@ -87,10 +89,11 @@ app.controller('CategoryIndexController',
 
         /*
          -------------------------------------------------
-         edit -- placeholder
+         edit
          -------------------------------------------------
          */
         $scope.edit = function (id) {
+            console.log('category edit.');
             $location.path('/admin/category/' + id + '/edit');
         };
 

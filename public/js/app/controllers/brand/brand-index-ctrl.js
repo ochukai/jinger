@@ -30,6 +30,7 @@ app.controller('BrandIndexController',
             });
         };
 
+        // show page one by default.
         $scope.toPage(1);
 
         /*
@@ -75,16 +76,6 @@ app.controller('BrandIndexController',
             $scope.modalInstance.dismiss('cancel');
         };
 
-        // function removeFromScopeById(id) {
-        //     for (var i = 0; i < $scope.brands.length; i++) {
-        //         var brand = $scope.brands[i];
-        //         if(brand.id === id) {
-        //             $scope.brands.splice(i, 1);
-        //             return;
-        //         }
-        //     }
-        // }
-
         function removeBrand(id) {
             var success = function () {
                     // give some info
@@ -106,7 +97,7 @@ app.controller('BrandIndexController',
 
         /*
          -------------------------------------------------
-         edit -- placeholder
+         edit
          -------------------------------------------------
          */
         $scope.edit = function(id){

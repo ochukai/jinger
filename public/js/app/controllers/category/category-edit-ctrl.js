@@ -7,7 +7,10 @@ app.controller('CategoryEditController',
         $scope.category = $scope.isUpdate ?
             Category.show({ id: $routeParams.id }) : new Category();
 
-        $scope.categories = Category.index();
+        // TODO pageable select list
+        var categories = Category.query({ pageSize: 10000 }, function () {
+            $scope.categories = categories.data;
+        });
 
         $scope.submit = function () {
 

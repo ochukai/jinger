@@ -55,43 +55,43 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
                 templateUrl: "/admin/partials/brand-edit",
                 controller: "BrandEditController"
             })
+
+            // category
+            .when('/admin/category', {
+                templateUrl: '/admin/partials/category-list',
+                controller: 'CategoryIndexController'
+            })
+            .when('/admin/category/new', {
+                templateUrl: '/admin/partials/category-edit',
+                controller: 'CategoryEditController'
+            })
+            .when('/admin/category/:id', {
+                templateUrl: '/admin/partials/category-show',
+                controller: 'CategoryShowController'
+            })
+            .when('/admin/category/:id/edit', {
+                templateUrl: '/admin/partials/category-edit',
+                controller: 'CategoryEditController'
+            })
         
             // product
-            .when('/product', {
+            .when('/admin/product', {
                 templateUrl: '/admin/partials/product-list',
                 controller: 'ProductIndexController'
             })
-            .when('/product/new', {
+            .when('/admin/product/new', {
                 templateUrl: '/admin/partials/product-edit',
                 controller: 'ProductEditController'
             })
-            .when('/product/:id', {
+            .when('/admin/product/:id', {
                 templateUrl: '/admin/partials/product-show',
                 controller: 'ProductShowController'
             })
-            .when('/product/:id/edit', {
+            .when('/admin/product/:id/edit', {
                 templateUrl: '/admin/partials/product-list',
                 controller: 'ProductEditController'
             })
 
-            // category
-            .when('/category', {
-                templateUrl: '/admin/partials/category-list',
-                controller: 'CategoryIndexController'
-            })
-            .when('/category/new', {
-                templateUrl: '/admin/partials/category-edit',
-                controller: 'CategoryEditController'
-            })
-            .when('/category/:id', {
-                templateUrl: '/admin/partials/category-show',
-                controller: 'CategoryShowController'
-            })
-            .when('/category/:id/edit', {
-                templateUrl: '/admin/partials/category-list',
-                controller: 'CategoryEditController'
-            })
-        
             .otherwise({
                 redirectTo: '/admin'
             });

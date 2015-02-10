@@ -10,7 +10,10 @@ body {
 }
 
 /**/
-
+em {
+    font-style: normal;
+    font-weight: 600;
+}
 .panel {
     padding-left: 0;
     padding-right: 0;
