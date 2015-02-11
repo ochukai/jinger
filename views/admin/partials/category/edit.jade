@@ -12,7 +12,7 @@
       .form-group
         label.col-sm-3.control-label(for='input-name') 父分类
         .col-sm-6
-          select(name='parent_id', ng-model="category.parent_id", ng-options="cate.id as cate.name for cate in categories")
+          select.form-control(name='parent_id', ng-model="category.parent_id", ng-options="cate.id as cate.name for cate in categories")
             option(value='0') ----请选择----
           p.help-block 顶级分类这里可不选~
       hr

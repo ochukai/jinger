@@ -2,3 +2,42 @@
   .page-header
     h1 产品管理&nbsp;
       small &nbsp;编辑产品信息
+  form.form-horizontal(name='productForm', ng-sugmit='submit()', novalidate='', role='form')
+    .col-sm-9
+      .form-group(ng-class="error('name')")
+        label.col-sm-2.control-label(for='input-name') &#x540D;&#x79F0;
+        .col-sm-6
+          input#input-name.form-control(type='text', placeholder='请输入品牌名称', name='name', ng-model='product.name', required='')
+          p.help-block(ng-show='productForm.name.$invalid') &#x5FC5;&#x987B;&#x586B;&#x5199;&#x540D;&#x79F0;&#x3002;
+      .form-group(ng-class="error('name')")
+        label.col-sm-2.control-label(for='input-name')  &#x7C7B;&#x578B;      
+        .col-sm-6
+          select.form-control
+            option &#x5668;&#x6750;   
+      hr
+      .form-group(ng-class="error('name')")
+        label.col-sm-2.control-label(for='input-name')  &#x56FE;&#x7247;     
+        .col-sm-9
+          input(type='file', nv-file-select='', uploader='uploader', multiple='')
+          ul
+            li(ng-repeat='item in uploader.queue')
+              strong {{ item.file.name }}         
+              div(ng-show='uploader.isHTML5', ng-thumb='{ file: item._file, height: 100 }')
+      .form-group(ng-class="error('name')")
+        label.col-sm-2.control-label(for='input-name')  &#x56FE;&#x6587;&#x4ECB;&#x7ECD;       
+        .col-sm-9
+          textarea.form-control(rows='5')
+    .col-sm-3
+      .panel.panel-success
+        .panel-heading
+          h3.panel-title  &#x63D0;&#x4EA4; 
+        .panel-body
+          button.btn.btn-primary.btn-block(type='submit', ng-disabled='productForm.$invalid')  &#x786E;&#x5B9A;    
+      .panel.panel-info
+        .panel-heading
+          h3.panel-title  &#x54C1;&#x724C;      
+        .panel-body
+      .panel.panel-info
+        .panel-heading
+          h3.panel-title  &#x5206;&#x7C7B; 
+        .panel-body

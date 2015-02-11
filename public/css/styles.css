@@ -126,7 +126,7 @@ em {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
-    padding: 1em 2.5em;
+    padding: 0.5em 1.6em;
     position: fixed;
     overflow: hidden;
     overflow-y: scroll;

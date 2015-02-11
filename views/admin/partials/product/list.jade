@@ -20,15 +20,33 @@ hr
       thead
         tr
           th.col-sm-1 #
-          th.col-sm-5 名称
-          th.col-sm-2 父分类编号
-          th.col-sm-2 父分类名称
-          th.col-sm-2 #
+          th.col-sm-2 名称
+          th.col-sm-2 分类
+          th.col-sm-2 所属品牌
+          th.col-sm-2 图片
+          th.col-sm-1 类型
+          th.col-sm-1 #
       tbody
+        tr
+          td 1
+          td 钙片
+          td 京儿
+          td 妇幼保健
+          td 。。。
+          td 药品
+          td
+            .btn-group.btn-group-sm(role='group')
+              button.btn.btn-default(type='button', ng-click='edit(product.id)')
+                span.glyphicon.glyphicon-pencil(aria-hidden='true')
+              button.btn.btn-danger(type='button', ng-click='remove(product.id)')
+                span.glyphicon.glyphicon-trash(aria-hidden='true')
+
         tr(ng-repeat='product in categories')
           td {{ product.id }}
           td {{ product.name }}
           td {{ product.parent_id }}
+          td {{ product.parent_name }}
+          td {{ product.parent_name }}
           td {{ product.parent_name }}
           td
             .btn-group.btn-group-sm(role='group')
