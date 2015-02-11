@@ -1,6 +1,8 @@
 .row
   .page-header
-    h1 &#x65B0;&#x5EFA;&#x54C1;&#x724C;
+    h1 品牌管理&nbsp;
+      small &nbsp;编辑品牌
+.row
   form.form-horizontal(name='brandForm', ng-submit='submit()', novalidate='', role='form')
     .col-sm-8
       .form-group
@@ -14,7 +16,7 @@
         .col-sm-6
           a.btn.btn-danger.img-upload-del.pull-right(ng-click='brand.picUrl = null')
             span.glyphicon.glyphicon-trash
-          img(src='{{brand.picUrl}}', height='200')
+          img(src='{{ brand.picUrl }}', height='200')
         hr
       .form-group
         label.col-sm-3.control-label(for='input-name') 选择一张图片
