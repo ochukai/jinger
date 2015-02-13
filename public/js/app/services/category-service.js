@@ -1,7 +1,7 @@
-app.factory("Category", function($resource, $http) {
+app.factory('Category', ['$resource', function($resource) {
     var resource = $resource(
-        "/admin/category/:id",
-        { id: "@_id" },
+        '/admin/category/:id',
+        { id: '@_id' },
         {
             'create':  { method: 'POST' },
             'query':   { method: 'GET', isArray: false },
@@ -11,4 +11,4 @@ app.factory("Category", function($resource, $http) {
         }
     );
     return resource;
-});
+}]);

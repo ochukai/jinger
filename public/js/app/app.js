@@ -9,7 +9,8 @@ var app = angular.module('myApp',
                 'ui.bootstrap',
                 'angular-storage',
                 'angular-loading-bar',
-                'angularFileUpload'
+                'angularFileUpload',
+                'ngKeditor'
             ]);
 
 // config the $routeProvider.
@@ -88,7 +89,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
                 controller: 'ProductShowController'
             })
             .when('/admin/product/:id/edit', {
-                templateUrl: '/admin/partials/product-list',
+                templateUrl: '/admin/partials/product-edit',
                 controller: 'ProductEditController'
             })
 
@@ -116,4 +117,4 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         }
                     };
                 }]);
-            }]);
+    }]);

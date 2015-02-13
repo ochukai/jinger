@@ -13,13 +13,18 @@ html(lang='zh', ng-app='myApp')
     // Bootstrap core CSS
     link(href='/bower-components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
     link(href='/bower-components/angular-loading-bar/build/loading-bar.min.css', rel='stylesheet')
+
+    // editor styles
+    link(href='/js/vendor/kindeditor/themes/default/default.css', rel='stylesheet')
+    link(href='/js/vendor/kindeditor/themes/simple/simple.css', rel='stylesheet')
+
     link(href='/css/styles.css', rel='stylesheet')
   body
     // alerts
     .alerts
       div(ng-repeat='alert in alerts', class='alert alert-{{alert.type}} animation')
         button.close(type='button', ng-click='alert.close()', aria-hidden='true') ×
-        {{alert.msg}}
+        {{ alert.msg }}
 
     // sider menus
     admin-sider
@@ -39,9 +44,8 @@ html(lang='zh', ng-app='myApp')
         <button class="btn btn-default" ng-click="cancel()"> 不 </button>
         </div>
 
-    // Bootstrap core JavaScript
+    // Jquery
     script(src='/bower-components/jquery/dist/jquery.min.js')
-    // script(src='/bower-components/bootstrap/dist/js/bootstrap.min.js')
 
     // Angular
     script(src='/bower-components/angular/angular.min.js')
@@ -51,7 +55,12 @@ html(lang='zh', ng-app='myApp')
     script(src='/bower-components/angular-bootstrap/ui-bootstrap-tpls.min.js')
     script(src='/bower-components/a0-angular-storage/dist/angular-storage.min.js')
     script(src='/bower-components/angular-loading-bar/build/loading-bar.min.js')
-    
+
+    // other libs
+    script(src='/js/vendor/kindeditor/kindeditor-min.js')
+    script(src='/js/vendor/kindeditor/lang/zh_CN.js')
+    script(src='/js/vendor/angular-kindeditor/angular-kindeditor.js')
+
     // angular file upload
     script(src='/bower-components/es5-shim/es5-shim.min.js')
     script(src='/bower-components/es5-shim/es5-sham.min.js')

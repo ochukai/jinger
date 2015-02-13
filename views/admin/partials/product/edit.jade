@@ -19,7 +19,7 @@
       .form-group(ng-class="error('name')")
         label.col-sm-2.control-label(for='input-name')  &#x56FE;&#x7247;
         .col-sm-9
-          input(type='file', nv-file-select='', uploader='uploader', multiple='')
+          input.form-control(type='file', nv-file-select='', uploader='uploader', multiple='')
           ul
             li(ng-repeat='item in uploader.queue')
               strong {{ item.file.name }}         
@@ -27,7 +27,7 @@
       .form-group(ng-class="error('name')")
         label.col-sm-2.control-label(for='input-name')  &#x56FE;&#x6587;&#x4ECB;&#x7ECD;
         .col-sm-9
-          textarea.form-control(rows='5')
+          textarea#content-tr.form-control(keditor='', ng-model='content', data-config='config')
     .col-sm-3
       .panel.panel-success
         .panel-heading

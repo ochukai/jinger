@@ -1,6 +1,6 @@
 app.controller('BrandEditController', 
-    ['$scope', 'FileUploader', '$q', '$routeParams', '$location', 'Brand', 'alertService',
-    function ($scope, FileUploader, $q, $routeParams, $location, Brand, alertService) {
+    ['$scope', 'FileUploader', '$routeParams', '$location', 'Brand', 'alertService',
+    function ($scope, FileUploader, $routeParams, $location, Brand, alertService) {
 
         var uploader = $scope.uploader = new FileUploader({ url: '/admin/uploads' });
 
