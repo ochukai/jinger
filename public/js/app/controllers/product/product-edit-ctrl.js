@@ -1,15 +1,50 @@
 app.controller('ProductEditController',
-    ['$scope', 'FileUploader', '$routeParams', '$location', 'Product', 'alertService',
-    function ($scope, FileUploader, $routeParams, $location, Product, alertService) {
+    ['$scope', 'FileUploader', '$routeParams', '$location', 'Product', 'Category', 'Brand', 'alertService',
+    function ($scope, FileUploader, $routeParams, $location, Product, Category, Brand, alertService) {
 
-        $scope.content = "hello world";
+        $scope.isUpdate = ($routeParams.id) ? true : false;
+
+        $scope.product = $scope.isUpdate ?
+            Product.show({ id: $routeParams.id }) : new Product();
+
+        // =============================
+        $scope.checkedCategories = $scope.product.categories || [12];
+
+        var categories = Category.query({ pageSize: 10000 }, function () {
+            $scope.categories = categories.data;
+
+            for (var i = 0; i < $scope.checkedCategories.length; i++) {
+                var cid = $scope.checkedCategories[i];
+                for (var j = 0; j < $scope.categories.length; j++) {
+                    if ($scope.categories[j].id === cid) {
+                        $scope.categories[j].checked = true;
+                        break;
+                    }
+                }
+            }
+        });
+
+        $scope.$watch('categories|filter:{checked:true}', function (nv) {
+            $scope.product.categories = nv.map(function (category) {
+                return category.id;
+            });
+        }, true);
+        // =============================//
+
+        var types = Product.types(function () {
+            $scope.types = types;
+        });
+
+        var brands = Brand.query({ pageSize : 10000}, function () {
+            $scope.brands = brands.data;
+        });
 
         $scope.config = {
             minHeight       : 200,
             width           : '100%',
             resizeType      : 1,
             themeType       : 'simple',
-            imageUploadJson : '',
+            imageUploadJson : '/admin/uploads',
             langType        : 'zh_CN',
             fillDescAfterUploadImage : true,
             items : [
@@ -17,20 +52,13 @@ app.controller('ProductEditController',
                 'undo', 'redo', '|',
                 'preview', 'print', 'template', 'cut', 'copy', 'paste', 'plainpaste', '|',
                 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'clearhtml', 'quickformat', '|',
-                'fullscreen',
-                '/',
-                'formatblock', 'fontname', 'fontsize', '|',
+                'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|',
                 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|',
                 'image', 'multiimage', 'insertfile', 'table', 'hr', 'emoticons', 'pagebreak', 'link', 'unlink'
             ]
         };
 
         var uploader = $scope.uploader = new FileUploader({ url: '/admin/uploads' });
-
-        $scope.isUpdate = ($routeParams.id) ? true : false;
-
-        $scope.product = $scope.isUpdate ?
-            Product.show({ id: $routeParams.id }) : new Product();
 
         uploader.filters
             .push({
@@ -41,7 +69,23 @@ app.controller('ProductEditController',
                 }
             });
 
+        uploader.onSuccessItem = function (fileItem, response, status, headers) {
+            console.info('onSuccessItem', fileItem, response, status, headers);
+            // $scope.brand.picUrl = response.url;
+        };
+
+        uploader.onErrorItem = function (fileItem, response, status, headers) {
+            console.info('onErrorItem', fileItem, response, status, headers);
+        };
+
+        uploader.onCompleteAll = function () {
+            console.info('onCompleteAll');
+            submitOrUpdate();
+        };
+
         $scope.submit = function () {
+
+            console.log($scope.product);
 
             // if an image is selected, it should be uploaded firstly.
             if (uploader.queue.length > 0) {
@@ -53,6 +97,9 @@ app.controller('ProductEditController',
         };
         
         function submitOrUpdate() {
+
+
+
 
             var success = function () {
                     alertService.addSuccess('ok.');

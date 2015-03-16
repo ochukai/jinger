@@ -13,9 +13,7 @@ app.directive('ngThumb', ['$window',
 
         return {
             restrict: 'E',
-            template: '<canvas/>'
-                + '<a class="btn btn-danger img-upload-del pull-right" ng-click="uploader.clearQueue()">'
-                + '<span class="glyphicon glyphicon-trash"></span></a>',
+            template: '<canvas/>',
             link: function (scope, element, attributes) {
                 if (!helper.support) return;
                 

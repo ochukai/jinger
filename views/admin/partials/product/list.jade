@@ -27,27 +27,13 @@ hr
           th.col-sm-1 类型
           th.col-sm-1 #
       tbody
-        tr
-          td 1
-          td 钙片
-          td 京儿
-          td 妇幼保健
-          td 。。。
-          td 药品
-          td
-            .btn-group.btn-group-sm(role='group')
-              button.btn.btn-default(type='button', ng-click='edit(product.id)')
-                span.glyphicon.glyphicon-pencil(aria-hidden='true')
-              button.btn.btn-danger(type='button', ng-click='remove(product.id)')
-                span.glyphicon.glyphicon-trash(aria-hidden='true')
-
-        tr(ng-repeat='product in categories')
+        tr(ng-repeat='product in products')
           td {{ product.id }}
           td {{ product.name }}
-          td {{ product.parent_id }}
-          td {{ product.parent_name }}
-          td {{ product.parent_name }}
-          td {{ product.parent_name }}
+          td {{ product.category_names }}
+          td {{ product.brand_name }}
+          td {{ product.type_name }}
+          td {{ product.type_name }}
           td
             .btn-group.btn-group-sm(role='group')
               button.btn.btn-default(type='button', ng-click='edit(product.id)')

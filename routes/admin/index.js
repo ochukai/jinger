@@ -9,6 +9,7 @@ var mUser        = require('../../models/user');
 
 var brand        = require('./brand');
 var category     = require('./category');
+var product      = require('./product');
 
 router.get('/', function (req, res) {
     res.render('admin/index', {
@@ -61,11 +62,16 @@ router.post('/uploads', function (req, res) {
             fileOperator.copy(srcPath, destPath);
 
             res.json({
+                error: 0,
                 url: filePath
             });
         })
         .catch(function (err) {
             console.error('error: ' + JSON.stringify(err));
+            res.json({
+                error: 1,
+                message: 'error happen'
+            });
         });
 });
 
@@ -160,7 +166,7 @@ router
     .put(brand.update)
     .delete(brand.remove);
 
-// brand
+// category
 router
     .route('/category')
     .get(category.list)
@@ -172,6 +178,20 @@ router
     .put(category.update)
     .delete(category.remove);
 
+// product
+router
+    .route('/product')
+    .get(product.list)
+    .post(product.create);
 
+router
+    .route('/product/:id')
+    .get(product.show)
+    .put(product.update)
+    .delete(product.remove);
+
+router
+    .route('/product/types')
+    .post(product.types);
 
 module.exports = router;

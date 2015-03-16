@@ -19,6 +19,10 @@ em {
     padding-right: 0;
 }
 
+.panel-title {
+     font-size: 14px;
+ }
+
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -252,4 +256,17 @@ em {
     display: inline-block;
     margin: 5px;
     z-index: 20;
+}
+
+.ul-image-preview {
+    list-style: none;
+    margin: 0.3rem 0;
+    padding:0.3rem;
+    background-color: #efefef;
+    border-radius: 4px;
+}
+.ul-image-preview li {
+    float:left;
+    display: inline-block;
+    margin: 5px 10px;
 }

@@ -5,12 +5,15 @@
 .row
   form.form-horizontal(name='brandForm', ng-submit='submit()', novalidate='', role='form')
     .col-sm-8
+
       .form-group
         label.col-sm-3.control-label(for='input-name') 品牌名称
         .col-sm-6
           input#input-name.form-control(type='text', placeholder='请输入品牌名称', name='name', ng-model='brand.name', required='')
           p.help-block(ng-show='brandForm.name.$invalid') 必须填写名称
+
       hr
+
       .form-group(ng-show='isUpdate')
         label.col-sm-3.control-label(for='input-name') 之前的图片
         .col-sm-6
@@ -18,14 +21,18 @@
             span.glyphicon.glyphicon-trash
           img(src='{{ brand.picUrl }}', height='200')
         hr
+
       .form-group
         label.col-sm-3.control-label(for='input-name') 选择一张图片
         .col-sm-6
           input(type='hidden', ng-model='brand.picUrl', name='picUrl')
-          input(type='file', name='uploadPicture' ng-show='uploader.queue.length <= 0', nv-file-select='', uploader='uploader', multiple='' )
+          input.form-control(type='file', name='uploadPicture' ng-show='uploader.queue.length <= 0', nv-file-select='', uploader='uploader', multiple='' )
           p.help-block(ng-show='uploader.queue.length <= 0') 大于等于 200 * 200 最好
           div(ng-repeat='item in uploader.queue', ng-show='uploader.isHTML5')
             ng-thumb(data-attrs='{ file: item._file, height: 200 }')
+            a.btn.btn-danger.img-upload-del.pull-right(ng-click='item.remove()')
+              span.glyphicon.glyphicon-trash
+
       hr
       .form-group
         .col-sm-offset-3.col-sm-9

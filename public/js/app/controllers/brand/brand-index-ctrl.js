@@ -92,7 +92,7 @@ app.controller('BrandIndexController',
                     alertService.addDanger('删除的时候出了一些问题，请稍后再试一次!');
                 };
 
-            Brand.destroy({id : id}, success, failure);
+            Brand.destroy({ id : id }, success, failure);
         }
 
         /*
@@ -100,7 +100,7 @@ app.controller('BrandIndexController',
          edit
          -------------------------------------------------
          */
-        $scope.edit = function(id){
+        $scope.edit = function (id) {
             $location.path('/admin/brand/' + id + '/edit');
         };
 

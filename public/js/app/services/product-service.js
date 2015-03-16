@@ -3,10 +3,11 @@ app.factory('Product', ['$resource', function($resource) {
         '/admin/product/:id',
         { id: '@_id' },
         {
-            'create':  { method: 'POST' },
-            'query':   { method: 'GET', isArray: false },
-            'show':    { method: 'GET', isArray: false },
-            'update':  { method: 'PUT' },
+            'create' : { method: 'POST' },
+            'types'  : { method: 'POST', url: '/admin/product/types', isArray: true  },
+            'query'  : { method: 'GET', isArray: false },
+            'show'   : { method: 'GET', isArray: false },
+            'update' : { method: 'PUT' },
             'destroy': { method: 'DELETE' }
         }
     );

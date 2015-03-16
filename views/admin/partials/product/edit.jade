@@ -3,42 +3,62 @@
     h1 产品管理&nbsp;
       small &nbsp;编辑产品信息
 .row
-  form.form-horizontal(name='productForm', ng-sugmit='submit()', novalidate='', role='form')
+  form.form-horizontal(name='productForm', ng-submit='submit()', novalidate='', role='form')
     .col-sm-9
-      .form-group(ng-class="error('name')")
-        label.col-sm-2.control-label(for='input-name') &#x540D;&#x79F0;
+
+      .form-group
+        label.col-sm-2.control-label(for='input-name')  品牌
+        .col-sm-4
+          select.form-control(ng-model="product.brand_id", ng-options='brand.id as brand.name for brand in brands', required='')
+            option(value='0') ----请选择----
+
+      .form-group
+        label.col-sm-2.control-label(for='input-name') 名称
         .col-sm-6
-          input#input-name.form-control(type='text', placeholder='请输入品牌名称', name='name', ng-model='product.name', required='')
-          p.help-block(ng-show='productForm.name.$invalid') &#x5FC5;&#x987B;&#x586B;&#x5199;&#x540D;&#x79F0;&#x3002;
-      .form-group(ng-class="error('name')")
-        label.col-sm-2.control-label(for='input-name')  &#x7C7B;&#x578B;
-        .col-sm-6
-          select.form-control
-            option &#x5668;&#x6750;   
+          input#input-name.form-control(type='text', placeholder='请输入产品名称', name='name', ng-model='product.name', required='')
+          p.help-block(ng-show='productForm.name.$invalid') 必须填写名称。
+
+      .form-group
+        label.col-sm-2.control-label(for='input-name')  类型
+        .col-sm-4
+          select.form-control(ng-model="product.type", ng-options='type.id as type.name for type in types', required='')
+            option(value='0') ----请选择----
+
       hr
-      .form-group(ng-class="error('name')")
-        label.col-sm-2.control-label(for='input-name')  &#x56FE;&#x7247;
+
+      .form-group
+        label.col-sm-2.control-label(for='input-name')  图片
         .col-sm-9
-          input.form-control(type='file', nv-file-select='', uploader='uploader', multiple='')
-          ul
-            li(ng-repeat='item in uploader.queue')
-              strong {{ item.file.name }}         
-              div(ng-show='uploader.isHTML5', ng-thumb='{ file: item._file, height: 100 }')
-      .form-group(ng-class="error('name')")
-        label.col-sm-2.control-label(for='input-name')  &#x56FE;&#x6587;&#x4ECB;&#x7ECD;
+          .row
+            .col-sm-6
+              input.form-control(type='file', nv-file-select='', uploader='uploader', multiple='')
+            .col-sm-3
+              p.form-control 已选中：{{ uploader.queue.length }}
+          .row
+            ul.ul-image-preview.clearfix(ng-show='uploader.isHTML5')
+              li(ng-repeat='item in uploader.queue')
+                a.btn.btn-danger.img-upload-del.pull-right(ng-click='item.remove()')
+                  span.glyphicon.glyphicon-trash
+                ng-thumb(data-attrs='{ file: item._file, width: 200 }')
+
+      .form-group
+        label.col-sm-2.control-label(for='input-name')  图文介绍
         .col-sm-9
-          textarea#content-tr.form-control(keditor='', ng-model='content', data-config='config')
+          textarea#content-tr.form-control(keditor='', ng-model='product.description', data-config='config')
+
     .col-sm-3
       .panel.panel-success
         .panel-heading
-          h3.panel-title  &#x63D0;&#x4EA4; 
+          h3.panel-title  确定
         .panel-body
-          button.btn.btn-primary.btn-block(type='submit', ng-disabled='productForm.$invalid')  &#x786E;&#x5B9A;
+          button.btn.btn-primary.btn-block(type='submit', ng-disabled='productForm.$invalid')  确定
+
       .panel.panel-info
         .panel-heading
-          h3.panel-title  &#x54C1;&#x724C;      
+          h3.panel-title  分类
         .panel-body
-      .panel.panel-info
-        .panel-heading
-          h3.panel-title  &#x5206;&#x7C7B; 
-        .panel-body
+          ul.list-unstyled
+            li.checkbox(ng-repeat='category in categories')
+              label
+                input(type='checkbox', name='categories[]', ng-model='category.checked', value='{{ category.id }}')
+                {{ category.name }}

@@ -27,6 +27,8 @@ exports.getByID = function (id) {
         + 'where b.mark_for_delete = false'
         + ' and b.id = ?';
 
+
+
     return db.query(sql, id);
 };
 
