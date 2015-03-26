@@ -8,12 +8,30 @@
       // Standard button
       a.btn.btn-primary.btn-block(href='/admin/product/new')  添加
     .col-sm-offset-1.col-sm-8
-      form.form-inline.pull-right(role='form', ng-submit='queryByName()')
+      form.form-inline.pull-right(role='form', ng-submit='queryByCondition()')
+
         .form-group
-          label.sr-only(for='queryCategoryName') 名称
-          input#searchName.form-control(type='text', placeholder='输入全称或某一个字', ng-model='queryCategoryName')
+          label.sr-only(for='input-name')  品牌
+          select.form-control(ng-model="queryProductBrand", ng-options='brand.id as brand.name for brand in brands')
+            option(value='') -品牌-
+
+        .form-group
+          label.sr-only(for='input-name')  分类
+          select.form-control(ng-model="queryProductCategory", ng-options='cate.id as cate.name for cate in categories')
+            option(value='') -分类-
+
+        .form-group
+          label.sr-only(for='input-name')  类型
+          select.form-control(ng-model="queryProductType", ng-options='type.id as type.name for type in types')
+            option(value='') -类型-
+
+        .form-group
+          label.sr-only(for='queryProductName') 名称
+          input#queryProductName.form-control.oquery-input(type='text', placeholder='名称', ng-model='queryProductName')
         button.btn.btn-primary(type='submit') 查询
+
 hr
+
 .row
   .table-responsive
     table.table.table-striped.table-hover

@@ -7,8 +7,10 @@ app.controller('ProductEditController',
         $scope.product = $scope.isUpdate ?
             Product.show({ id: $routeParams.id }) : new Product();
 
+        $scope.pic_urls = $scope.product.pic_urls ? $scope.product.pic_urls.split(',') : [];
+
         // =============================
-        $scope.checkedCategories = $scope.product.categories || [12];
+        $scope.checkedCategories = $scope.product.categories || [];
 
         var categories = Category.query({ pageSize: 10000 }, function () {
             $scope.categories = categories.data;
@@ -25,9 +27,11 @@ app.controller('ProductEditController',
         });
 
         $scope.$watch('categories|filter:{checked:true}', function (nv) {
-            $scope.product.categories = nv.map(function (category) {
-                return category.id;
-            });
+            if (nv) {
+                $scope.product.categories = nv.map(function (category) {
+                    return category.id;
+                });
+            }
         }, true);
         // =============================//
 
@@ -44,7 +48,8 @@ app.controller('ProductEditController',
             width           : '100%',
             resizeType      : 1,
             themeType       : 'simple',
-            imageUploadJson : '/admin/uploads',
+            allowFileManager: true,
+            uploadJson      : '/admin/uploads',
             langType        : 'zh_CN',
             fillDescAfterUploadImage : true,
             items : [
@@ -71,7 +76,7 @@ app.controller('ProductEditController',
 
         uploader.onSuccessItem = function (fileItem, response, status, headers) {
             console.info('onSuccessItem', fileItem, response, status, headers);
-            // $scope.brand.picUrl = response.url;
+            $scope.pic_urls.push(response.url);
         };
 
         uploader.onErrorItem = function (fileItem, response, status, headers) {
@@ -80,6 +85,8 @@ app.controller('ProductEditController',
 
         uploader.onCompleteAll = function () {
             console.info('onCompleteAll');
+
+            $scope.product.pic_urls = $scope.pic_urls.join(',');
             submitOrUpdate();
         };
 
@@ -97,9 +104,6 @@ app.controller('ProductEditController',
         };
         
         function submitOrUpdate() {
-
-
-
 
             var success = function () {
                     alertService.addSuccess('ok.');

@@ -34,6 +34,21 @@ router.post('/uploads', function (req, res) {
     formParser
         .parse(req)
         .then(function (allFields) {
+
+            // console.log(allFields);
+            // {
+            //     localUrl: 'C:\\fakepath\\024144uqbc9ib208iz64i6.jpg',
+            //     imgFile: {
+            //         domain: null,
+            //         _events: {},
+            //         _maxListeners: 10,
+            //         size: 580390,
+            //         path: 'C:\\Users\\xiaoyee\\AppData\\Local\\Temp\\upload_93345e3d6ef65c1a8bb35baa70312488',
+            //         name: '024144uqbc9ib208iz64i6.jpg',
+            //         type: 'image/jpeg'
+            //     }
+            // }
+            //
             // {
             //     "file": {
             //         "size": 2071180,
@@ -43,7 +58,8 @@ router.post('/uploads', function (req, res) {
             //         "mtime": "2015-01-18T13:00:55.337Z"
             //     }
             // }
-            var file = allFields.file,
+
+            var file = allFields.file || allFields.imgFile,
                 srcPath = file.path,
                 name = file.name,
 
@@ -55,9 +71,6 @@ router.post('/uploads', function (req, res) {
 
             var filePath = "/uploads/" + getFileName(name),
                 destPath = path.join(__dirname, '../../public' + filePath);
-
-            //console.log('__dirname: ' + __dirname);
-            //console.log('destPath: ' + destPath);
 
             fileOperator.copy(srcPath, destPath);
 

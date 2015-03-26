@@ -6,8 +6,11 @@ exports.list = function (req, res) {
     var pageRequest = {
         page: req.param('page') || 1,
         pageSize: req.param('pageSize') || 8,
-        args: {
-            // name: req.param('categoryName')
+        argsObj: {
+            name       : req.param('name'),
+            brandId    : req.param('brandId'),
+            typeId     : req.param('typeId'),
+            categoryId : req.param('categoryId')
         }
     };
 
@@ -49,6 +52,7 @@ exports.create = function (req, res) {
         name: req.param('name'),
         categories: req.param('categories').toString().split(','),
         description: req.param('description'),
+        pic_urls: req.param('pic_urls'),
         type: req.param('type'),
         brand_id: req.param('brand_id')
     };
